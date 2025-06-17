@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Activity List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+<h2>My Activities</h2>
+<table class="table table-bordered">
+    <thead class="table-light">
+    <tr>
+        <th>Date & Time</th>
+        <th>Weight (kg)</th>
+        <th>Elevation (m)</th>
+        <th>Avg Pace (km/h)</th>
+        <th>Distance (km)</th>
+        <th>Kcal Burnt</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="a : ${activities}">
+        <td th:text="${#temporals.format(a.dateTime, 'dd MMM yyyy, h:mm a')}"></td>
+        <td th:text="${a.weight.value}"></td>
+        <td th:text="${a.elevation}"></td>
+        <td th:text="${a.avgPace}"></td>
+        <td th:text="${a.runningDistance}"></td>
+        <td th:text="${a.kcalBurnt}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/home" class="btn btn-link">Back to Home</a>
+</body>
+</html>
