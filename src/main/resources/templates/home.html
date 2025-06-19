@@ -1,20 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: #fff5f5;
+            background: linear-gradient(131deg, rgba(255, 245, 245, 1) 0%, rgba(237, 252, 245, 1) 55%, rgba(255, 249, 230, 1) 100%);
             min-height: 100vh;
         }
 
+        .navbar{
+            border-radius: 30px;
+            margin-top: 20px;
+            margin-right: 20px;
+            margin-left: 20px;
+            padding: 10px 0 10px 20px;
+        }
+
+        .dropdown-toggle{
+            border-radius: 30px;
+        }
+
+        .dropdown-menu{
+            border-radius: 1rem;
+        }
+        .dropdown-item{
+
+        }
+        .dropdown-item:hover{
+            background-color: #d8d8d8;
+        }
         .welcome-card {
             padding: 2rem;
-            border-radius: 1rem;
+            border-radius: 2rem;
             background-color: white;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
         }
+
+        .section-card{
+            background-color: #f8f8f8;
+            border-radius: 30px;
+            padding: 1rem 1rem 40px;
+        }
+
+        .custom-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            border-radius: 2rem;
+            background-color: #7b61ff;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #684bd4;
+            color: white;
+            text-decoration: none;
+        }
+
+        .custom-button svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.75rem;
+            fill: white;
+        }
+
     </style>
 </head>
 <body>
@@ -22,11 +78,10 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">🏃‍♂️ Activity Tracker</a>
-
+        <a class="navbar-brand" style="font-family: 'Cinzel Black',serif; color: #da9f4f" href="#">ACTIVO</a>
         <div class="dropdown ms-auto">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                👤 User
+                👤
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                 <li><a class="dropdown-item" href="/userprofile">Profile</a></li>
@@ -42,13 +97,35 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <div class="welcome-card">
-                <h1 class="mb-4 text-center">Welcome to the Dashboard</h1>
+                <h1 class="mb-4 text-center" style="font-weight: bolder">Welcome Back!</h1>
                 <p class="lead text-center mb-4">Track your activities and daily water intake with ease.</p>
-                <div class="d-grid gap-3">
-                    <a href="/activity" class="btn btn-success btn-lg">🏃 Add Activity</a>
-                    <a href="/activity/list" class="btn btn-outline-secondary btn-lg">📋 My Activities</a>
-                    <a href="/water-intake" class="btn btn-primary btn-lg">💧 Add Water Intake</a>
-                    <a href="/water-intake/list" class="btn btn-outline-primary btn-lg">📊 My Water Intake</a>
+
+                <div class="section-card mb-4">
+                    <p class="lead text-center mb-4" style="margin-top: 10px;; font-weight: bold; font-size: 25px;">Fitness Section</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/activity" class="custom-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304l0 128c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-223.1L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6l29.7 0c33.7 0 64.9 17.7 82.3 46.6l44.9 74.7c-16.1 17.6-28.6 38.5-36.6 61.5c-1.9-1.8-3.5-3.9-4.9-6.3L232 256.9 232 480c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-128-16 0zM432 224a144 144 0 1 1 0 288 144 144 0 1 1 0-288zm16 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 48-48 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16s16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-48 0 0-48z"/></svg>
+                            Add Activity
+                        </a>
+                        <a href="/activity/list" class="custom-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM125.7 175.5c9.9-9.9 23.4-15.5 37.5-15.5c1.9 0 3.8 .1 5.6 .3L137.6 254c-9.3 28 1.7 58.8 26.8 74.5l86.2 53.9-25.4 88.8c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l28.7-100.4c5.9-20.6-2.6-42.6-20.7-53.9L238 299l30.9-82.4 5.1 12.3C289 264.7 323.9 288 362.7 288l21.3 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-21.3 0c-12.9 0-24.6-7.8-29.5-19.7l-6.3-15c-14.6-35.1-44.1-61.9-80.5-73.1l-48.7-15c-11.1-3.4-22.7-5.2-34.4-5.2c-31 0-60.8 12.3-82.7 34.3L57.4 153.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l23.1-23.1zM91.2 352L32 352c-17.7 0-32 14.3-32 32s14.3 32 32 32l69.6 0c19 0 36.2-11.2 43.9-28.5L157 361.6l-9.5-6c-17.5-10.9-30.5-26.8-37.9-44.9L91.2 352z"/></svg>
+                            My Activities
+                        </a>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <p class="lead text-center mb-4" style="margin-top: 10px; font-weight: bold; font-size: 25px;">Water Section</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/water-intake" class="custom-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/></svg>
+                            Add Water Intake
+                        </a>
+                        <a href="/water-intake/list" class="custom-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M32 0C23.1 0 14.6 3.7 8.6 10.2S-.6 25.4 .1 34.3L28.9 437.7c3 41.9 37.8 74.3 79.8 74.3l166.6 0c42 0 76.8-32.4 79.8-74.3L383.9 34.3c.6-8.9-2.4-17.6-8.5-24.1S360.9 0 352 0L32 0zM73 156.5L66.4 64l251.3 0L311 156.5l-24.2 12.1c-19.4 9.7-42.2 9.7-61.6 0c-20.9-10.4-45.5-10.4-66.4 0c-19.4 9.7-42.2 9.7-61.6 0L73 156.5z"/></svg>
+                            My Water Intake
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
