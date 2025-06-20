@@ -137,6 +137,19 @@ public class MainController {
         return "userprofile";
     }
 
+    @GetMapping("/userMain")
+    public String showProfile(Principal principal, Model model) {
+        User user = userRepo.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+
+        // Get latest weight and add separately
+        Weight latestWeight = weightRepo.findTopByUserOrderByDateTimeDesc(user);
+        double latestWeightValue = latestWeight != null ? latestWeight.getValue() : 0.0;
+        model.addAttribute("latestWeightValue", latestWeightValue);
+
+        return "userMain";
+    }
+
 
 
 

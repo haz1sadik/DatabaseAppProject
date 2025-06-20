@@ -4,53 +4,124 @@
     <meta charset="UTF-8">
     <title>Edit Activity</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+    <style>
+        body {
+            background: linear-gradient(131deg, rgba(255, 245, 245, 1) 0%, rgba(237, 252, 245, 1) 55%, rgba(255, 249, 230, 1) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-<div class="container py-5">
+        .edit-card {
+            background-color: #ffffff;
+            padding: 2rem 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-family: 'Cinzel Black', serif;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-weight: 600;
+            text-align: center;
+            color: #343a40;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 30px;
+            padding-top: 10px;
+            padding-bottom: 12px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .btn-success {
+            background-color: #198754;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-danger {
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-card">
+    <h1>ACTIVO</h1>
+
     <!-- Top Navigation -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="top-nav">
         <a th:href="@{/admin}" class="btn btn-outline-primary">🏠 Home</a>
         <a th:href="@{/logout}" class="btn btn-outline-danger">Logout</a>
     </div>
 
-    <!-- Card -->
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Edit Activity</h4>
+    <!-- Form Title -->
+    <h4 class="mb-4">🏃 Edit Activity</h4>
+
+    <!-- Form -->
+    <form th:action="@{'/admin/user/' + ${userId} + '/activity/' + ${activity.id} + '/edit'}"
+          method="post" th:object="${activity}">
+
+        <div class="mb-3">
+            <label>Elevation (m)</label>
+            <input type="number" step="0.1" class="form-control" th:field="*{elevation}" required>
         </div>
-        <div class="card-body">
-            <form th:action="@{'/admin/user/' + ${userId} + '/activity/' + ${activity.id} + '/edit'}"
-                  method="post" th:object="${activity}">
 
-                <input type="number" step="0.1" class="form-control" name="weightValue" required
-                       th:value="${activity.weight != null} ? ${activity.weight.value} : ''">
-
-
-                <div class="mb-3">
-                    <label class="form-label">Elevation (m)</label>
-                    <input type="number" step="0.1" class="form-control" th:field="*{elevation}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Average Pace (km/h)</label>
-                    <input type="number" step="0.1" class="form-control" th:field="*{avgPace}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Running Distance (km)</label>
-                    <input type="number" step="0.1" class="form-control" th:field="*{runningDistance}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Date and Time</label>
-                    <input type="text" class="form-control" th:field="*{dateTime}" readonly>
-                </div>
-
-                <div class="d-flex justify-content-between">
-                    <a th:href="@{'/admin/user/' + ${userId} + '/activities'}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-success">Update Activity</button>
-                </div>
-            </form>
+        <div class="mb-3">
+            <label>Average Pace (km/h)</label>
+            <input type="number" step="0.1" class="form-control" th:field="*{avgPace}" required>
         </div>
-    </div>
+
+        <div class="mb-3">
+            <label>Running Distance (km)</label>
+            <input type="number" step="0.1" class="form-control" th:field="*{runningDistance}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Date and Time</label>
+            <input type="text" class="form-control" th:field="*{dateTime}" readonly>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a th:href="@{'/admin/user/' + ${userId} + '/activities'}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-success">Record Activity</button>
+        </div>
+    </form>
 </div>
 
 </body>
